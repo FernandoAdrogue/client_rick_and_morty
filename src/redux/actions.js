@@ -4,6 +4,7 @@ export const REMOVE_FAV = "REMOVE_FAV"
 export const FILTER = "FILTER"
 export const ORDER = "ORDER"
 export const CLEAR_FAV = "CLEAR_FAV"
+const {REACT_APP_API_BASE_URL}=process.env
 
 // export const addFav = (character)=>{
 //     return {
@@ -24,7 +25,7 @@ export const CLEAR_FAV = "CLEAR_FAV"
 //     };
 //  };
 export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    const endpoint = `${REACT_APP_API_BASE_URL}/rickandmorty/fav`;
     return async (dispatch) => {
         try{
            const {data}= await axios.post(endpoint, character)
@@ -59,7 +60,7 @@ export const addFav = (character) => {
 //     };
 //  };
 export const removeFav = (id) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+    const endpoint = `${REACT_APP_API_BASE_URL}/rickandmorty/fav/${id}`;
     return async (dispatch) => {
         try{
             const {data}= await axios.delete(endpoint)

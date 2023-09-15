@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import Favorites from './components/Favorites/Favorites'
 import { useDispatch } from 'react-redux';
 import { clearFav } from './redux/actions';
+const {REACT_APP_API_BASE_URL}=process.env
 
 function App() {
    
@@ -36,7 +37,7 @@ function App() {
    async function login (userData) {
       try{
          const { email, password } = userData;
-         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const URL = `${REACT_APP_API_BASE_URL}/rickandmorty/login/`;
          const {data} = await axios(URL + `?email=${email}&password=${password}`)
          const {access} = data
          setAccess(data);
@@ -87,7 +88,7 @@ function App() {
       try{
          let found = characters.find((character)=>character.id === Number(id))
          if(!found){
-            const {data}= await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+            const {data}= await axios(`${REACT_APP_API_BASE_URL}/rickandmorty/character/${id}`)
             setCharacters((oldChars) => [...oldChars, data]);
          }else{
             window.alert("El personaje y fue agregado")

@@ -3,6 +3,7 @@ import styles from "./Detail.module.css"
 import axios from "axios";
 import {useParams} from "react-router-dom"
 import { Link } from "react-router-dom";
+const {REACT_APP_API_BASE_URL}=process.env
 
 
 const Detail = ()=> {
@@ -11,7 +12,7 @@ const Detail = ()=> {
     const [character ,setCharacter] = useState({})
     
     useEffect(() => {//Make API Request whit an ID
-        axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+        axios(`${REACT_APP_API_BASE_URL}/rickandmorty/character/${id}`).then(({ data }) => {
             if (data.name) {
                 setCharacter(data);
            } 

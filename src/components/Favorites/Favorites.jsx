@@ -37,13 +37,13 @@ const Favorites =()=>{
         return ( 
          <div className={styles.favContainer}>
             <div className={styles.selectContainer}>
-               <select onChange={handleOrder}>
-                  <option value="UN" selected disabled>Order by</option>
+               <select onChange={handleOrder} defaultValue="UN">
+                  <option value="UN" disabled>Order by</option>
                   <option value="A">Ascendente</option>
                   <option value="D">Descendente</option>
                </select>
-               <select onChange={handleFilter}>
-                  <option value="ALL" selected disabled>Filter by</option>
+               <select onChange={handleFilter} defaultValue="ALL">
+                  <option value="ALL" disabled>Filter by</option>
                   <option value="ALL">All</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>

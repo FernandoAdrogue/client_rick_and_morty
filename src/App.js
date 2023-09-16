@@ -41,9 +41,11 @@ function App() {
          const {data} = await axios(URL + `?email=${email}&password=${password}`)
          const {access} = data
          setAccess(data);
+         console.log(data);
          access ? navigate('/home'):window.alert("Login invalido");
       }
       catch({response}){
+         window.alert(response.data.error)
          console.log(`${response.status} ${response.statusText}`);  
          // window.alert(`${response.status} ${response.statusText}`)
       }
@@ -117,7 +119,7 @@ function App() {
         
    // render the elements accordin the defined paths and any other path is redirect to /404
    return (
-      <div on className='App'>
+      <div className='App'>
          <Nav onSearch={onSearch} logOut={logOut}/>
          <Routes>
             <Route path='/' element={<Form login={login}/>}/>
